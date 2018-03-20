@@ -29,18 +29,9 @@ using namespace std ;
 #define fast ios_base :: sync_with_stdio(false ) ; cin.tie(NULL ) ;
 #define dbg(x )  cout << #x << " : " << x << endl ;
 
-int _set(int n, int pos  )
-{
-    return n = n|(1<< pos) ;
-}
-int reset(int n,int pos )
-{
-    return n =  n & ~(1<<pos );
-}
-bool check(int n,int pos )
-{
-    return (bool ) (n& (1<<pos))  ;
-}
+int _set(int n, int pos  ){ return n = n|(1<< pos) ; }
+int reset(int n,int pos ){ return n =  n & ~(1<<pos );}
+bool check(int n,int pos ){ return (bool ) (n& (1<<pos))  ; }
 /*
 
 
@@ -56,13 +47,7 @@ bool check(int n,int pos )
 */
 
 typedef long long ll ;
-
-
-ll maxx(ll a, ll b)
-{
-    if(a > b ) return a ;
-    else return b ;
-}
+////////////code from here //////////////////
 
 struct _node
 {
@@ -81,22 +66,6 @@ struct _node
 _node tree[4*M]  ;
 ll arr[M+2] ;
 
-void debug2(int node)
-{
-    cout << "node : " << node << endl;
-    cout << tree[node]._max << " " << tree[node].sum << " " << tree[node].prefix << " " <<tree[node].suffix  <<  endl ;
-    cout << endl ;
-
-}
-
-void debug( int k )
-{
-    repi(i, 2*k-1 ) cout << tree[i]._max << " " ;
-    cout << endl;
-
-
-}
-
 void func ( int node  )                         // used in init function 
 {
     int left = node<< 1, right =  left +1 ;
@@ -110,7 +79,6 @@ void func ( int node  )                         // used in init function
 _node func2(_node left, _node right )     // used in query function 
 {
     _node tnew  ;
-
     if(left.sum  ==  -inf ) return right ;
     if(right.sum  ==  -inf  ) return left   ;
 
@@ -119,41 +87,31 @@ _node func2(_node left, _node right )     // used in query function
     tnew.prefix  =  max(right.prefix, right.sum + left.prefix  ) ;
     tnew._max = max(max( right._max , left._max ),  left.prefix + right.suffix )  ;
     return tnew ;
-
-
 }
+
 void init(int node, int l, int r )
 {
     if(l > r ) return ;
     if(l == r )
     {
-
         tree[node] =  _node(arr[r],arr[r],arr[r],arr[r] )  ;
         return ;
     }
     else
     {
-
         int mid =  (l+r )>>1 ;
         int left = node<< 1, right  = left + 1 ;
         init( left, l, mid) ;
         init( right, mid+1,r ) ;
-
         func(node ) ;
-
     }
 }
 
 
 _node  query(int node, int l, int r, int i, int j )
 {
-
     if( i > r || l > j ) return _node( -inf , -inf , -inf , -inf ) ;
-    if( l >= i && r <= j )
-    {
-        return tree[node]  ;
-
-    }
+    if( l >= i && r <= j ) { return tree[node];  }
 
     int mid =  (l +r)>> 1, left = node<<1, right =  left +1   ;
 
@@ -171,24 +129,19 @@ int main()
    //  freopen("out.txt", "w",stdout );
 
     int k, cs = 0, tc ;
-
     cin  >> k  ;
     repi(i, k) cin >> arr[i] ;
-
     init(1, 1,  k ) ;
   
     cin >> tc ;
     while(tc--)
     {
-
         int i, j ;
         cin >> i  >> j  ;
        
         _node ans  =  query(1, 1, k, i,  j )  ;
         cout <<  ans._max  << endl ;
-
     }
-
     return 0;
 }
 
