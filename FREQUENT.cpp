@@ -42,7 +42,7 @@ struct _node {
 		ret =a ; msf  = b ; mpf = c ; msn = d ; mpn  = e ;
 	}
 	void show() {
-        cout << ret << " " << mpf <<" " << msf <<" "  <<  mpn << " " <<  msn<< endl ;
+        	cout << ret << " " << mpf <<" " << msf <<" "  <<  mpn << " " <<  msn<< endl ;
 	}
 };
 
@@ -87,7 +87,7 @@ void init(int node, int left , int right ) {
 
 		return ;
 	}
-    int lf =  node<<1  ,rt =  lf +1  ,mid  = (left + right)>>1  ;
+    	int lf =  node<<1  ,rt =  lf +1  ,mid  = (left + right)>>1  ;
 
 	init( lf , left  , mid ) ;
 	init( rt ,  mid + 1,  right  ) ;
@@ -111,21 +111,20 @@ _node query( int node , int  left , int right  , int  i , int j ) {
 }
 
 int main() {
-	fast
+    	fast
 
- // freopen("in.txt", "r",stdin );
-   // freopen("out.txt", "w",stdout );
+ 	// freopen("in.txt", "r",stdin );
+   
+   	int k , cs = 0 , tc ;
+   	int n , m ;
 
-	int k , cs = 0 , tc ;
-	int n , m ;
-
-    //cout << "oops \n"  ;
+    	//cout << "oops \n"  ;
 	while(1) {
 
 		cin >> n ;
 		if( n == 0 )  break;
     
-    cin >> m ;
+    		cin >> m ;
 		repi(i , n )  cin >> arr[i] ;
 
 		init(1 , 1 ,  n) ;
@@ -135,14 +134,9 @@ int main() {
 			cin >> i >> j ;
 			_node q  = query(1 , 1, n , i , j ) ;
 			cout << q.ret << endl   ;
-
 		}
-
-
-
-
 	}
-	//cout << "hell world\n" ;
+	//cout << "hello world\n" ;
 
 	return 0;
 }
