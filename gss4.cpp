@@ -52,7 +52,6 @@ ll _query(int i ) {
 		sum += tree[i] ;
 
 	}
-
 	return sum ;
 }
 
@@ -65,22 +64,21 @@ int find(int i ) {
 void func( int x , int y ) {
 	int i = find( x) ;
 	for( ; i <= y  ; ) {
-        if(arr[i] != 1 ) {
-            update(i , -arr[i] ) ;
-            arr[i ]  = sqrt(arr[i] ) ;
-            update(i , arr[i] ) ;
-        }
+        	if(arr[i] != 1 ) {
+            		update(i , -arr[i] ) ;
+           		arr[i ]  = sqrt(arr[i] ) ;
+            		update(i , arr[i] ) ;
+        	}
 		if(arr[i] <= 1)  par[i]  = i+1  ;
-
 		i =  find(i+1) ;
 	}
 }
 
 int main() {
-	//fast
+	 //fast
 
-    freopen("in.txt", "r",stdin );
-   // freopen("out.txt", "w",stdout );
+    	//freopen("in.txt", "r",stdin );
+   	// freopen("out.txt", "w",stdout );
 
 	int k , cs = 0 , tc  ,  n ;
 
@@ -105,6 +103,7 @@ int main() {
 			else func(x ,y  ) ;
 		}
 		printf("\n") ;
+	
 	}
 	return 0;
 }
